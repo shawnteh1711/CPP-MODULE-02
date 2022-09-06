@@ -6,7 +6,7 @@
 /*   By: steh <steh@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 19:19:47 by steh              #+#    #+#             */
-/*   Updated: 2022/08/25 20:03:58 by steh             ###   ########.fr       */
+/*   Updated: 2022/09/06 20:41:24 by steh             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ class Fixed
 		~Fixed(void);
 		int		getRawBits(void) const;
 		void	setRawBits(int const raw);
-
 };
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: steh <steh@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 19:21:02 by steh              #+#    #+#             */
-/*   Updated: 2022/08/28 22:42:13 by steh             ###   ########.fr       */
+/*   Updated: 2022/09/03 20:23:00 by steh             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,12 +81,6 @@ int		Fixed::toInt(void) const
 	fix = (int)this->_fix;
 	return (fix / bit);
 	// return ((int)this->_fix / (int)(1 << this->_frac));
-}
-
-std::ostream & operator<<(std::ostream & o, Fixed const & i)
-{
-	o << i.toFloat();
-	return (o);
 }
 
 // comparison operators
@@ -204,4 +198,10 @@ Fixed const & Fixed::max(Fixed const & a, Fixed const & b)
 	if (a > b)
 		return (a);
 	return (b);
+}
+
+std::ostream & operator<<(std::ostream & o, Fixed const & i)
+{
+	o << i.toFloat();
+	return (o);
 }
