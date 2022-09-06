@@ -6,7 +6,7 @@
 /*   By: steh <steh@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 19:21:02 by steh              #+#    #+#             */
-/*   Updated: 2022/08/28 21:44:33 by steh             ###   ########.fr       */
+/*   Updated: 2022/09/06 21:12:55 by steh             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ Fixed::Fixed(int const input)
 	this->setRawBits(input << this->_frac);
 }
 
+// Calculate fixed = floating_input * 2^(fractional_bits)
 Fixed::Fixed(float const input)
 {
 	int	fixed;

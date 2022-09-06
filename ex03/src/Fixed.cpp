@@ -6,7 +6,7 @@
 /*   By: steh <steh@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 19:21:02 by steh              #+#    #+#             */
-/*   Updated: 2022/08/30 13:55:27 by steh             ###   ########.fr       */
+/*   Updated: 2022/09/06 22:56:03 by steh             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ Fixed::Fixed(void): _fix(0)
 
 Fixed::Fixed(int const input)
 {
+
 	this->setRawBits(input << this->_frac);
 }
 
@@ -83,41 +84,48 @@ int		Fixed::toInt(void) const
 	// return ((int)this->_fix / (int)(1 << this->_frac));
 }
 
-std::ostream & operator<<(std::ostream & o, Fixed const & i)
-{
-	o << i.toFloat();
-	return (o);
-}
-
 // comparison operators
+// if operation is correct return 1 else 0
 bool	Fixed::operator>(Fixed const & rhs) const
 {
-	return (this->_fix > rhs.getRawBits());
+	if (this->getRawBits() > rhs.getRawBits())
+		return (1);
+	return (0);
 }
 
 bool	Fixed::operator<(Fixed const & rhs) const
 {
-	return (this->_fix > rhs.getRawBits());
+	if (this->getRawBits() < rhs.getRawBits())
+		return (1);
+	return (0);
 }
 
 bool	Fixed::operator>=(Fixed const & rhs) const
 {
-	return (this->_fix >= rhs.getRawBits());
+	if (this->getRawBits() >= rhs.getRawBits())
+		return (1);
+	return (0);
 }
 
 bool	Fixed::operator<=(Fixed const & rhs) const
 {
-	return (this->_fix <= rhs.getRawBits());
+	if (this->getRawBits() <= rhs.getRawBits())
+		return (1);
+	return (0);
 }
 
 bool	Fixed::operator==(Fixed const & rhs) const
 {
-	return (this->_fix == rhs.getRawBits());
+	if (this->getRawBits() == rhs.getRawBits())
+		return (1);
+	return (0);
 }
 
 bool	Fixed::operator!=(Fixed const & rhs) const
 {
-	return (this->_fix != rhs.getRawBits());
+	if (this->getRawBits() != rhs.getRawBits())
+		return (1);
+	return (0);
 }
 
 // arithmetic operators
@@ -158,7 +166,7 @@ Fixed	Fixed::operator++(int)
 	return (tmp);
 }
 
-Fixed	Fixed::operator++(void)
+Fixed	&Fixed::operator++(void)
 {
 	this->_fix++;
 	return (*this);
@@ -172,7 +180,7 @@ Fixed	Fixed::operator--(int)
 	return (tmp);
 }
 
-Fixed	Fixed::operator--(void)
+Fixed	&Fixed::operator--(void)
 {
 	this->_fix--;
 	return (*this);
@@ -185,7 +193,7 @@ Fixed & Fixed::min(Fixed & a, Fixed & b)
 	return (b);
 }
 
-Fixed const & Fixed::min(Fixed const & a, Fixed const & b)
+const Fixed & Fixed::min(Fixed const & a, Fixed const & b)
 {
 	if (a < b)
 		return (a);
@@ -199,9 +207,15 @@ Fixed & Fixed::max(Fixed & a, Fixed & b)
 	return (b);
 }
 
-Fixed const & Fixed::max(Fixed const & a, Fixed const & b)
+const Fixed & Fixed::max(Fixed const & a, Fixed const & b)
 {
 	if (a > b)
 		return (a);
 	return (b);
+}
+
+std::ostream & operator<<(std::ostream & o, Fixed const & i)
+{
+	o << i.toFloat();
+	return (o);
 }

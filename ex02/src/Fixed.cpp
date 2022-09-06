@@ -6,7 +6,7 @@
 /*   By: steh <steh@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 19:21:02 by steh              #+#    #+#             */
-/*   Updated: 2022/09/03 20:23:00 by steh             ###   ########.fr       */
+/*   Updated: 2022/09/06 23:07:30 by steh             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ Fixed::Fixed(void): _fix(0)
 
 Fixed::Fixed(int const input)
 {
+
 	this->setRawBits(input << this->_frac);
 }
 
@@ -84,34 +85,47 @@ int		Fixed::toInt(void) const
 }
 
 // comparison operators
+// if operation is correct return 1 else 0
 bool	Fixed::operator>(Fixed const & rhs) const
 {
-	return (this->_fix > rhs.getRawBits());
+	if (this->getRawBits() > rhs.getRawBits())
+		return (1);
+	return (0);
 }
 
 bool	Fixed::operator<(Fixed const & rhs) const
 {
-	return (this->_fix > rhs.getRawBits());
+	if (this->getRawBits() < rhs.getRawBits())
+		return (1);
+	return (0);
 }
 
 bool	Fixed::operator>=(Fixed const & rhs) const
 {
-	return (this->_fix >= rhs.getRawBits());
+	if (this->getRawBits() >= rhs.getRawBits())
+		return (1);
+	return (0);
 }
 
 bool	Fixed::operator<=(Fixed const & rhs) const
 {
-	return (this->_fix <= rhs.getRawBits());
+	if (this->getRawBits() <= rhs.getRawBits())
+		return (1);
+	return (0);
 }
 
 bool	Fixed::operator==(Fixed const & rhs) const
 {
-	return (this->_fix == rhs.getRawBits());
+	if (this->getRawBits() == rhs.getRawBits())
+		return (1);
+	return (0);
 }
 
 bool	Fixed::operator!=(Fixed const & rhs) const
 {
-	return (this->_fix != rhs.getRawBits());
+	if (this->getRawBits() != rhs.getRawBits())
+		return (1);
+	return (0);
 }
 
 // arithmetic operators
@@ -152,7 +166,7 @@ Fixed	Fixed::operator++(int)
 	return (tmp);
 }
 
-Fixed	Fixed::operator++(void)
+Fixed	&Fixed::operator++(void)
 {
 	this->_fix++;
 	return (*this);
@@ -166,7 +180,7 @@ Fixed	Fixed::operator--(int)
 	return (tmp);
 }
 
-Fixed	Fixed::operator--(void)
+Fixed	&Fixed::operator--(void)
 {
 	this->_fix--;
 	return (*this);
@@ -179,7 +193,7 @@ Fixed & Fixed::min(Fixed & a, Fixed & b)
 	return (b);
 }
 
-Fixed const & Fixed::min(Fixed const & a, Fixed const & b)
+const Fixed & Fixed::min(Fixed const & a, Fixed const & b)
 {
 	if (a < b)
 		return (a);
@@ -193,7 +207,7 @@ Fixed & Fixed::max(Fixed & a, Fixed & b)
 	return (b);
 }
 
-Fixed const & Fixed::max(Fixed const & a, Fixed const & b)
+const Fixed & Fixed::max(Fixed const & a, Fixed const & b)
 {
 	if (a > b)
 		return (a);

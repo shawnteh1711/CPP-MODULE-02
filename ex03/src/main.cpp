@@ -6,7 +6,7 @@
 /*   By: steh <steh@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 09:44:00 by steh              #+#    #+#             */
-/*   Updated: 2022/08/30 15:11:18 by steh             ###   ########.fr       */
+/*   Updated: 2022/09/06 23:02:26 by steh             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ int main(void)
 	float	x;
 	float	y;
 
-	Point	a(16.4, 61.5);
-	Point	b(11.1, 38.1);
-	Point	c(37.7, 42.3);
+	Point	a(-2.8, 5.6);
+	Point	b(-4, 1);
+	Point	c(0.4, 1.8);
 
 	cout << "Check point whether in triangle " << endl;
 	cout << "Give float x to check :";

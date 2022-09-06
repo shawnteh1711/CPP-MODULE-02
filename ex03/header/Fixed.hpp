@@ -6,7 +6,7 @@
 /*   By: steh <steh@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 19:19:47 by steh              #+#    #+#             */
-/*   Updated: 2022/08/28 22:37:19 by steh             ###   ########.fr       */
+/*   Updated: 2022/09/06 23:04:45 by steh             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,12 @@ class Fixed
 		Fixed	operator/(Fixed const & rhs) const;
 
 		// increment/decrement operators
-		Fixed	operator++(int);
-		Fixed	operator++(void);
-		Fixed	operator--(int);
-		Fixed	operator--(void);
+		// post operation will create a copy
+		// pre operation do not create a copy using reference
+		Fixed	operator++(int);  // F++
+		Fixed	&operator++(void); // ++F
+		Fixed	operator--(int);  // F--
+		Fixed	&operator--(void); // --F
 
 		static Fixed &       min(Fixed & a, Fixed & b);
 		static Fixed const & min(Fixed const & a, Fixed const & b);
